@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { User } from 'src/app/interfaces/user.interface';
+import { UsersService } from 'src/app/services/users.service';
 import { MustMatch } from '../../../validators/validators';
-// JSON
-import usersList from 'src/assets/json/users.json';
 
 @Component({
   selector: 'app-register',
@@ -14,13 +14,16 @@ export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
   dataLoading: boolean = false;
+  errorNewUser: boolean = false;
+  errorMessageNewUser: string = '';
 
   constructor(
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private usersService: UsersService,
   ) { }
 
-  get f() { console.log(this.registerForm.controls.repassword); return this.registerForm.controls; }
+  get f() { return this.registerForm.controls; }
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
@@ -37,14 +40,27 @@ export class RegisterComponent implements OnInit {
 
   registerUser() {
     if (this.registerForm.invalid) { return }
-    // TODO : Falta integrar el servicio para registrar al usuario
-    // JSON simulando usuarios
-    var userLogin = this.registerForm.value;
-    usersList.push(userLogin)
-    console.log('User Register -->', usersList)
-    this.router.navigate(['/principal/ships'])
 
+    this.errorNewUser = false;
+    this.errorMessageNewUser = '';
+
+    this.dataLoading = true;
+
+    const save = this.usersService.addUser({
+      first_name: this.registerForm.value.first_name,
+      last_name: this.registerForm.value.last_name,
+      email: this.registerForm.value.email,
+      username: this.registerForm.value.username,
+      password: this.registerForm.value.password,
+    });
+
+    this.dataLoading = false;
+
+    if (save) {
+      this.router.navigate(['/principal/ships'])
+    } else {
+      this.errorNewUser = true;
+      this.errorMessageNewUser = this.usersService.errorMessage || 'An error has occurred on creating new user';
+    }
   }
-
-
 }

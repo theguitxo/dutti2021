@@ -99,6 +99,11 @@
             <!-- <a routerLink="/" class="btn btn-link">Cancel</a> -->
             <button type="button" class="btn buttons__register" [routerLink]="'/'">Cancelar</button>
         </div>
+        <div class="input-group-append" *ngIf="errorNewUser">
+            <span class="colorInvalid">
+                <i>{{ errorMessageNewUser }}</i>
+            </span>
+        </div>
     </form>
 </div>
 
