@@ -9,6 +9,10 @@ import { AuthenticationModule } from './modules/authentication/authentication.mo
 import { AppComponent } from './app.component';
 import { PrincipalComponent } from './components/principal/principal.component';
 
+// Services
+import { UsersService } from './services/users.service';
+import { StorageService } from './services/storage.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,9 +22,12 @@ import { PrincipalComponent } from './components/principal/principal.component';
     BrowserModule,
     AppRoutingModule,
     PrincipalModule,
-    AuthenticationModule
+    AuthenticationModule,
   ],
-  providers: [],
+  providers: [
+    UsersService,
+    StorageService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
