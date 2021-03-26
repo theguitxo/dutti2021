@@ -2,12 +2,16 @@ import { Injectable } from "@angular/core";
 import { User } from "../interfaces/user.interface";
 import { StorageService, STORAGE_VALUES } from "./storage.service";
 
+enum STORAGE_KEYS {
+  USERS = 'users',
+  LOGGED = 'logged',
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
 
-  private _usersKey: string = 'users';
   private _usersList: Array<User>;
   private _errorMessage: string;
 
@@ -18,7 +22,7 @@ export class UsersService {
   constructor(
     private storageService: StorageService,
   ){
-    this._usersList = this.storageService.getJSONValue(STORAGE_VALUES.LOCAL, this._usersKey);
+    this._usersList = this.storageService.getJSONValue(STORAGE_VALUES.LOCAL, STORAGE_KEYS.USERS);
     if (this._usersList === null) {
       this._usersList = [];
     }
@@ -32,7 +36,7 @@ export class UsersService {
 
     const tempUserList = [...this._usersList, user];
     
-    const save = this.storageService.setJSONValue(STORAGE_VALUES.LOCAL, this._usersKey, tempUserList);
+    const save = this.storageService.setJSONValue(STORAGE_VALUES.LOCAL, STORAGE_KEYS.USERS, tempUserList);
     if (save) {
       this._usersList.push(user);
       return true;
@@ -53,6 +57,17 @@ export class UsersService {
       this._errorMessage = `User ${user} don't exists`;
       return false;
     }
+
+    this.storageService.setValue(STORAGE_VALUES.SESSION, STORAGE_KEYS.LOGGED, '1');
     return true;
+  }
+
+  isLoged(): boolean {
+    if (this.storageService.keyExists(STORAGE_VALUES.SESSION, STORAGE_KEYS.LOGGED) &&
+      this.storageService.getValue(STORAGE_VALUES.SESSION, STORAGE_KEYS.LOGGED) === '1') {
+        return true;
+      }
+    
+    return false;
   }
 }
