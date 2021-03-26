@@ -46,8 +46,8 @@
                     </span>
                 </div>
         </div>
-        <div class="form-group mt-5" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
-            <!-- <label for="password">Password</label> -->
+        <div class="form-group mt-5" ng-class="{ 'has-error': form.email.$dirty && form.email.$error.required}">
+            <!-- <label for="email">Email</label> -->
             <input
                 type="email"
                 name="email"
@@ -58,6 +58,38 @@
                 <div class="input-group-append form__required" *ngIf="registerForm.get('email').invalid">
                     <span class="colorInvalid">
                         <i>Email is required</i>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group mt-5" ng-class="{ 'has-error': form.password.$dirty && (form.password.$error.required || form.password.$error.minLength || form.password.$error.maxLength)}">
+            <!-- <label for="password">Password</label> -->
+            <input
+                type="password"
+                name="password"
+                class="form-control"
+                placeholder="password"
+                formControlName="password" />
+                <hr class="hr-line">
+                <div class="input-group-append form__required">
+                    <span class="colorInvalid">
+                        <i *ngIf="f.password.errors?.required">Password is required</i>
+                        <i *ngIf="f.password.errors?.minlength || f.password.errors?.maxlength">Password length must be 8 characters</i>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group mt-5" ng-class="{ 'has-error': form.repassword.$dirty && f.repassword.errors}">
+            <!-- <label for="repassword">Repeat Password</label> -->
+            <input
+                type="password"
+                name="repassword"
+                class="form-control"
+                placeholder="repeat password"
+                formControlName="repassword" />
+                <hr class="hr-line">
+                <div class="input-group-append form__required">
+                    <span class="colorInvalid">
+                      <i *ngIf="f.repassword.errors?.required">Repeat password is required</i>
+                      <i *ngIf="f.repassword.errors?.mustMatch">Passwords must be equals</i>
                     </span>
                 </div>
         </div>

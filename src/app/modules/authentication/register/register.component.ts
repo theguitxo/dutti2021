@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import { MustMatch } from '../../../validators/validators';
 // JSON
 import usersList from 'src/assets/json/users.json';
 
@@ -20,14 +20,19 @@ export class RegisterComponent implements OnInit {
     private router: Router
   ) { }
 
+  get f() { console.log(this.registerForm.controls.repassword); return this.registerForm.controls; }
+
   ngOnInit(): void {
     this.registerForm = this.fb.group({
       first_name: [ '', [Validators.required, Validators.minLength(3)]],
       last_name: [ '', [Validators.required, Validators.minLength(3)]],
       username: [ '', [Validators.required, Validators.minLength(3)]],
       email: [ '', [Validators.required, Validators.minLength(6)]],
-
-    })
+      password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8)]],
+      repassword: ['', [Validators.required]],
+    },{
+      validators: MustMatch('password', 'repassword')
+    });
   }
 
   registerUser() {
@@ -40,5 +45,6 @@ export class RegisterComponent implements OnInit {
     this.router.navigate(['/principal/ships'])
 
   }
+
 
 }
