@@ -40,4 +40,19 @@ export class UsersService {
 
     return false;
   }
+
+  loginUser(user: string, password: string): boolean {
+    const userData:User = this._usersList.find(i => i.username.toLowerCase() === user.toLowerCase());
+
+    if (userData) {
+      if (password !== userData.password) {
+        this._errorMessage = `Password not valid`;
+        return false;
+      } 
+    } else {
+      this._errorMessage = `User ${user} don't exists`;
+      return false;
+    }
+    return true;
+  }
 }

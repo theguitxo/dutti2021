@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-
-// JSON
-import usersList from 'src/assets/json/users.json';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-login',
@@ -14,13 +12,14 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   dataLoading: boolean = false;
-  users: any = usersList;
-  unregistered: boolean = false;
   invalid: boolean = false;
+  errorLoginUser: boolean = false;
+  errorMessageLoginUser: string = '';
 
   constructor(
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private usersService: UsersService,
   ) { }
 
   ngOnInit(): void {
@@ -29,16 +28,24 @@ export class LoginComponent implements OnInit {
       password: [ '', [Validators.required, Validators.minLength(6)]]
     })
   }
+
   loginUser() {
     if (this.loginForm.invalid) { return }
-    // TODO : Falta integrar el servicio para autentificar al usuario
-    // JSON simulando usuarios
-    var userLogin = this.loginForm.value.username;
-    var filterJson = this.users.filter(function (user) { return user.first_name === userLogin  });
-    if (filterJson.length > 0) {
+
+    this.errorLoginUser = false;
+    this.errorMessageLoginUser = '';
+
+    this.dataLoading = true;
+
+    const loginUser: boolean = this.usersService.loginUser(this.loginForm.value.username, this.loginForm.value.password);
+
+    this.dataLoading = false;
+    
+    if (loginUser) {
       this.router.navigate(['/principal/ships'])
     } else {
-      this.unregistered = true;
+      this.errorLoginUser = true;
+      this.errorMessageLoginUser = this.usersService.errorMessage || 'Error on loing user';
     }
   }
 }
