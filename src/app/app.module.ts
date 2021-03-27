@@ -14,6 +14,8 @@ import { UsersService } from './services/users.service';
 import { StorageService } from './services/storage.service';
 import { CanLoadPrincipalGuard } from './services/guards.service';
 import { AuthenticationService } from './services/authentication.service';
+import { NgxsModule } from '@ngxs/store';
+import { ShipsState } from './store/ships.state';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,9 @@ import { AuthenticationService } from './services/authentication.service';
     AppRoutingModule,
     PrincipalModule,
     AuthenticationModule,
+    NgxsModule.forRoot([
+      ShipsState
+    ]),
   ],
   providers: [
     AuthenticationService,

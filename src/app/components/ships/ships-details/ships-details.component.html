@@ -1,5 +1,5 @@
 <pagination-controls (pageChange)="pageChanged($event)" class="text-center"></pagination-controls>
-<div class="ship" *ngFor="let ships of dataList.results | paginate: config; ; let i = index" (click)="openDetails(ships)">
+<div class="ship" *ngFor="let ships of dataList.list | paginate: config; ; let i = index" (click)="openDetails(ships)">
     <div class="panel-heading">
         <h3 class="panel-title">{{ships.name}}</h3>
     </div>

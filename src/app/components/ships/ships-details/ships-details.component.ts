@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { iShipsState } from 'src/app/interfaces/ships.interface';
 declare var $: any;
 
 
@@ -9,7 +10,9 @@ declare var $: any;
 })
 export class ShipsDetailsComponent implements OnInit {
 
-  @Input() dataList: any;
+  @Input() dataList: iShipsState;
+  @Output() changePage = new EventEmitter<number>();
+
   config: any;
   shipId: string = '';
   url: string = '';
@@ -18,14 +21,14 @@ export class ShipsDetailsComponent implements OnInit {
   modelDetails: string = '';
   starship_class: string = '';
 
-  constructor() { 
+  constructor() {
   }
-  
+
   ngOnInit(): void {
       this.config = {
-        itemsPerPage: 5,
-        currentPage: 1,
-        totalItems: this.dataList.length
+        itemsPerPage: 10,
+        currentPage: this.dataList.page,
+        totalItems: this.dataList.total
       };
   }
 
@@ -37,6 +40,7 @@ export class ShipsDetailsComponent implements OnInit {
 
   pageChanged(event){
     this.config.currentPage = event;
+    this.changePage.emit(event);
   }
 
   openDetails(details) {
