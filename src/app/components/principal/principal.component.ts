@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-principal',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrincipalComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private authenticationService: AuthenticationService,
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
   }
 
+  logOff(): void {
+    this.authenticationService.logOff();
+    this.router.navigate(['']);
+  }
 }

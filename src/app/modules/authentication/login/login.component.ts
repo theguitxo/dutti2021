@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -20,6 +21,7 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private usersService: UsersService,
+    private authenticationService: AuthenticationService,
   ) { }
 
   ngOnInit(): void {
@@ -37,15 +39,15 @@ export class LoginComponent implements OnInit {
 
     this.dataLoading = true;
 
-    const loginUser: boolean = this.usersService.loginUser(this.loginForm.value.username, this.loginForm.value.password);
+    const loginUser: boolean = this.authenticationService.logIn(this.loginForm.value.username, this.loginForm.value.password);
 
     this.dataLoading = false;
-    
+
     if (loginUser) {
       this.router.navigate(['/principal/ships'])
     } else {
       this.errorLoginUser = true;
-      this.errorMessageLoginUser = this.usersService.errorMessage || 'Error on loing user';
+      this.errorMessageLoginUser = this.authenticationService.errorMessage || 'Error on loing user';
     }
   }
 }

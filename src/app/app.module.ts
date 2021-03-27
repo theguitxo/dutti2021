@@ -12,6 +12,8 @@ import { PrincipalComponent } from './components/principal/principal.component';
 // Services
 import { UsersService } from './services/users.service';
 import { StorageService } from './services/storage.service';
+import { CanLoadPrincipalGuard } from './services/guards.service';
+import { AuthenticationService } from './services/authentication.service';
 
 @NgModule({
   declarations: [
@@ -25,8 +27,10 @@ import { StorageService } from './services/storage.service';
     AuthenticationModule,
   ],
   providers: [
+    AuthenticationService,
     UsersService,
-    StorageService
+    StorageService,
+    CanLoadPrincipalGuard,
   ],
   bootstrap: [AppComponent]
 })

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/interfaces/user.interface';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { UsersService } from 'src/app/services/users.service';
 import { MustMatch } from '../../../validators/validators';
 
@@ -21,6 +22,7 @@ export class RegisterComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private usersService: UsersService,
+    private authenticationService: AuthenticationService,
   ) { }
 
   get f() { return this.registerForm.controls; }
@@ -57,7 +59,7 @@ export class RegisterComponent implements OnInit {
     this.dataLoading = false;
 
     if (save) {
-      this.usersService.loginUser(this.registerForm.value.username, this.registerForm.value.password);
+      this.authenticationService.logIn(this.registerForm.value.username, this.registerForm.value.password);
       this.router.navigate(['/principal/ships']);
     } else {
       this.errorNewUser = true;
