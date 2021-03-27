@@ -57,7 +57,8 @@ export class RegisterComponent implements OnInit {
     this.dataLoading = false;
 
     if (save) {
-      this.router.navigate(['/principal/ships'])
+      this.usersService.loginUser(this.registerForm.value.username, this.registerForm.value.password);
+      this.router.navigate(['/principal/ships']);
     } else {
       this.errorNewUser = true;
       this.errorMessageNewUser = this.usersService.errorMessage || 'An error has occurred on creating new user';

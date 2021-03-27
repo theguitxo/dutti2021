@@ -5,6 +5,7 @@ import { StorageService, STORAGE_VALUES } from "./storage.service";
 enum STORAGE_KEYS {
   USERS = 'users',
   LOGGED = 'logged',
+  LOGGED_USER_DATA = 'logged_user_data',
 }
 
 @Injectable({
@@ -35,7 +36,7 @@ export class UsersService {
     }
 
     const tempUserList = [...this._usersList, user];
-    
+
     const save = this.storageService.setJSONValue(STORAGE_VALUES.LOCAL, STORAGE_KEYS.USERS, tempUserList);
     if (save) {
       this._usersList.push(user);
@@ -52,13 +53,14 @@ export class UsersService {
       if (password !== userData.password) {
         this._errorMessage = `Password not valid`;
         return false;
-      } 
+      }
     } else {
       this._errorMessage = `User ${user} don't exists`;
       return false;
     }
 
     this.storageService.setValue(STORAGE_VALUES.SESSION, STORAGE_KEYS.LOGGED, '1');
+    this.storageService.setJSONValue(STORAGE_VALUES.SESSION, STORAGE_KEYS.LOGGED_USER_DATA, userData);
     return true;
   }
 
@@ -67,7 +69,7 @@ export class UsersService {
       this.storageService.getValue(STORAGE_VALUES.SESSION, STORAGE_KEYS.LOGGED) === '1') {
         return true;
       }
-    
+
     return false;
   }
 }
