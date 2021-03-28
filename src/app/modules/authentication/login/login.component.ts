@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.loginForm = this.fb.group({
       username: [ '', [Validators.required, Validators.minLength(3)]],
-      password: [ '', [Validators.required, Validators.minLength(6)]]
+      password: [ '', [Validators.required, Validators.minLength(8)]]
     })
   }
 
@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/principal/ships'])
     } else {
       this.errorLoginUser = true;
-      this.errorMessageLoginUser = this.authenticationService.errorMessage || 'Error on loing user';
+      this.errorMessageLoginUser = this.authenticationService.errorMessage || 'Error on login user';
     }
   }
 }

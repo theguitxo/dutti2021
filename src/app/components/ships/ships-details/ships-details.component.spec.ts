@@ -25,7 +25,7 @@ describe('ShipsDetailsComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule],
-      declarations: [ ShipsDetailsComponent, MockPaginationControls, MockPipe ]
+      declarations: [ ShipsDetailsComponent, MockPaginationControls, MockPipe ],
     })
     .compileComponents();
   }));
@@ -33,7 +33,11 @@ describe('ShipsDetailsComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ShipsDetailsComponent);
     component = fixture.componentInstance;
-    component.dataList = {};
+    component.dataList = {
+      list: [],
+      page: 1,
+      total: 1,
+    };
     fixture.detectChanges();
   });
 
