@@ -16,6 +16,7 @@ import { CanLoadPrincipalGuard } from './services/guards.service';
 import { AuthenticationService } from './services/authentication.service';
 import { NgxsModule } from '@ngxs/store';
 import { ShipsState } from './store/ships.state';
+import { CacheService } from './services/cache.service';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ShipsState } from './store/ships.state';
     UsersService,
     StorageService,
     CanLoadPrincipalGuard,
+    CacheService,
   ],
   bootstrap: [AppComponent]
 })
