@@ -33,9 +33,9 @@ export class ShipsDetailsComponent implements OnInit {
   }
 
   getStarshipId(url) {
-    this.shipId = url.slice(0, -1)
-    const urlImage = `${this.shipId}.jpg`
-    return urlImage !== "";
+    this.shipId = url.split('/').filter(item => item !== '').slice(-1)[0];
+    const urlImage = `https://starwars-visualguide.com/assets/img/starships/${this.shipId}.jpg`;
+    return urlImage;
   }
 
   pageChanged(event){
