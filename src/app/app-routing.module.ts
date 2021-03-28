@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent},
   {
     path: 'principal',
-    loadChildren: () => import(`./components/principal/principal.module`).then(m => m.PrincipalModule),
+    loadChildren: () => import(`./modules/principal/principal.module`).then(m => m.PrincipalModule),
     canLoad: [CanLoadPrincipalGuard],
   }
 ];

@@ -2,7 +2,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
-import { ShipsComponent } from 'src/app/components/ships/ships.component';
+import { ShipsComponent } from 'src/app/modules/principal/ships/ships.component';
 import { STORAGE_KEYS } from 'src/app/enums/users.enum';
 import { StorageService } from 'src/app/services/storage.service';
 import { UsersService } from 'src/app/services/users.service';
