@@ -17,11 +17,15 @@ import { AuthenticationService } from './services/authentication.service';
 import { NgxsModule } from '@ngxs/store';
 import { ShipsState } from './store/ships.state';
 import { CacheService } from './services/cache.service';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpRequestsInterceptor } from './interceptors/httpconfig.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PrincipalComponent
+    PrincipalComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +42,11 @@ import { CacheService } from './services/cache.service';
     StorageService,
     CanLoadPrincipalGuard,
     CacheService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpRequestsInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent]
 })
