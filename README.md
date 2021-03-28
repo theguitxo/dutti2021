@@ -35,4 +35,9 @@ Navigate to `http://localhost:4200/`.
 
 # Notas del desarrollador:
 
+Las respuestas de la API se guardan en el Local Storage para recuperarlas en vez de volver a hacer una petición. En el lador del servidor se podrían
+cachear las repuestas HTTP y, suponiendo que el JSON que devuelve la API, lo genera a partir de peticiones a una base de datos, se podrían cachear las consultas SQL.
 
+[Cachear peticiones HTTP](https://diego.com.es/cache-http)
+
+[Cachear consultas SQL](https://blogprog.gonzalolopez.es/articulos/cache-de-consultas.html)
