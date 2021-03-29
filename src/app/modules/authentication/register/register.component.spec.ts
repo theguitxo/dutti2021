@@ -1,20 +1,36 @@
 
+import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
-import { ShipsComponent } from 'src/app/modules/principal/ships/ships.component';
+import { BehaviorSubject } from 'rxjs';
 import { STORAGE_KEYS } from 'src/app/enums/users.enum';
 import { StorageService } from 'src/app/services/storage.service';
 import { UsersService } from 'src/app/services/users.service';
+import { ShipsDetailsComponent } from '../../principal/ships-details/ships-details.component';
+import { ShipsComponent } from '../../principal/ships/ships.component';
 import { RegisterComponent } from './register.component';
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
   let fixture: ComponentFixture<RegisterComponent>;
 
+  const serviceMock ={
+    getShips:function(){ return  new BehaviorSubject([])}
+
+  }
+
+  @Component({
+    selector: 'ships-details',
+    template: '<p>Mock Ship Details</p>'
+  })
+  class MockShipDetails {
+    @Input() dataList:any;
+  }
+
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ RegisterComponent ],
+      declarations: [ RegisterComponent, ShipsComponent, MockShipDetails],
       imports:[
         FormsModule,
         RouterTestingModule.withRoutes([{

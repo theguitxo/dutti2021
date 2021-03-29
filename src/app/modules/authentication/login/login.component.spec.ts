@@ -1,8 +1,11 @@
+import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { ShipsComponent } from 'src/app/modules/principal/ships/ships.component';
+import { BehaviorSubject } from 'rxjs';
+import { ShipsDetailsComponent } from '../../principal/ships-details/ships-details.component';
+import { ShipsComponent } from '../../principal/ships/ships.component';
 
 
 import { LoginComponent } from './login.component';
@@ -12,9 +15,21 @@ describe('LoginComponent', () => {
   let fixture: ComponentFixture<LoginComponent>;
   let router: Router;
 
+  const serviceMock ={
+    getShips:function(){ return  new BehaviorSubject([])}
+
+  }
+  @Component({
+    selector: 'ships-details',
+    template: '<p>Mock Ship Details</p>'
+  })
+  class MockShipDetails {
+    @Input() dataList:any;
+  }
+  
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoginComponent ],
+      declarations: [ LoginComponent, ShipsComponent, MockShipDetails],
       imports:[
         FormsModule,
         RouterTestingModule.withRoutes([{

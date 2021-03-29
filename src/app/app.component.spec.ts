@@ -1,15 +1,25 @@
+import { Component } from '@angular/core';
 import { TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
+
+  @Component({
+    selector: 'app-loading-spinner',
+    template: '<p>Mock LoadingSpinner</p>'
+  })
+  class MockLoadingSpinner {
+  }
+
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        MockLoadingSpinner,
       ],
     }).compileComponents();
   }));

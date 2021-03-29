@@ -18,7 +18,6 @@ describe('ShipsComponent', () => {
 
   }
 
-
   @Component({
     selector: 'ships-details',
     template: '<p>Mock Ship Details</p>'
