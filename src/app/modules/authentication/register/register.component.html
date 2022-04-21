@@ -2,7 +2,6 @@
     <h2 class="text-center">Registrar</h2>
     <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
         <div class="form-group mt-5">
-            <!-- <label for="username">First name</label> -->
             <input
                 type="text"
                 name="first_name"
@@ -12,12 +11,11 @@
                 <hr class="hr-line">
                 <div class="input-group-append form__required" *ngIf="registerForm.get('first_name').invalid">
                     <span class="colorInvalid">
-                        <i>FirstName is required</i>
+                        <em>FirstName is required</em>
                     </span>
                 </div>
         </div>
         <div class="form-group mt-5" ng-class="{ 'has-error': form.lastName.$dirty && form.lastName.$error.required }">
-            <!-- <label for="username">Last name</label> -->
             <input
                 type="text"
                 name="last_name"
@@ -27,12 +25,11 @@
                 <hr class="hr-line">
                 <div class="input-group-append form__required" *ngIf="registerForm.get('last_name').invalid">
                     <span class="colorInvalid">
-                        <i>LastName is required</i>
+                        <em>LastName is required</em>
                     </span>
                 </div>
         </div>
         <div class="form-group mt-5" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
-            <!-- <label for="username">Username</label> -->
             <input
                 type="text"
                 name="username"
@@ -42,12 +39,11 @@
                 <hr class="hr-line">
                 <div class="input-group-append form__required" *ngIf="registerForm.get('username').invalid">
                     <span class="colorInvalid">
-                        <i>Username is required</i>
+                        <em>Username is required</em>
                     </span>
                 </div>
         </div>
         <div class="form-group mt-5" ng-class="{ 'has-error': form.email.$dirty && f.email.errors}">
-            <!-- <label for="email">Email</label> -->
             <input
                 type="email"
                 name="email"
@@ -57,13 +53,12 @@
                 <hr class="hr-line">
                 <div class="input-group-append form__required" *ngIf="registerForm.get('email').invalid">
                     <span class="colorInvalid">
-                      <i *ngIf="f.email.errors?.required">Email is required</i>
-                      <i *ngIf="f.email.errors?.email">Email not valid</i>
+                      <i *ngIf="f.email.errors?.required">Email is required</em>
+                      <i *ngIf="f.email.errors?.email">Email not valid</em>
                     </span>
                 </div>
         </div>
         <div class="form-group mt-5" ng-class="{ 'has-error': form.password.$dirty && (form.password.$error.required || form.password.$error.minLength || form.password.$error.maxLength)}">
-            <!-- <label for="password">Password</label> -->
             <input
                 type="password"
                 name="password"
@@ -73,13 +68,12 @@
                 <hr class="hr-line">
                 <div class="input-group-append form__required">
                     <span class="colorInvalid">
-                        <i *ngIf="f.password.errors?.required">Password is required</i>
-                        <i *ngIf="f.password.errors?.minlength || f.password.errors?.maxlength">Password length must be 8 characters</i>
+                        <i *ngIf="f.password.errors?.required">Password is required</em>
+                        <i *ngIf="f.password.errors?.minlength || f.password.errors?.maxlength">Password length must be 8 characters</em>
                     </span>
                 </div>
         </div>
         <div class="form-group mt-5" ng-class="{ 'has-error': form.repassword.$dirty && f.repassword.errors}">
-            <!-- <label for="repassword">Repeat Password</label> -->
             <input
                 type="password"
                 name="repassword"
@@ -89,20 +83,19 @@
                 <hr class="hr-line">
                 <div class="input-group-append form__required">
                     <span class="colorInvalid">
-                      <i *ngIf="f.repassword.errors?.required">Repeat password is required</i>
-                      <i *ngIf="f.repassword.errors?.mustMatch">Passwords must be equals</i>
+                      <em *ngIf="f.repassword.errors?.required">Repeat password is required</em>
+                      <em *ngIf="f.repassword.errors?.mustMatch">Passwords must be equals</em>
                     </span>
                 </div>
         </div>
         <div class="buttons">
             <button type="submit" [disabled]="registerForm.invalid" class="btn buttons__login">Register</button>
-            <img *ngIf="dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-            <!-- <a routerLink="/" class="btn btn-link">Cancel</a> -->
+            <img *ngIf="dataLoading" alt="img" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
             <button type="button" class="btn buttons__register" [routerLink]="'/'">Cancelar</button>
         </div>
         <div class="input-group-append" *ngIf="errorNewUser">
             <span class="colorInvalid">
-                <i>{{ errorMessageNewUser }}</i>
+                <em>{{ errorMessageNewUser }}</em>
             </span>
         </div>
     </form>

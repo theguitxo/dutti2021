@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Select, Store } from '@ngxs/store';
-import { Observable } from 'rxjs';
-import { iShipsState, Ship } from 'src/app/interfaces/ships.interface';
-import { ShipsService } from 'src/app/services/ships.service';
+import { Store } from '@ngxs/store';
+import { IShipsState } from 'src/app/interfaces/ships.interface';
 import { GetShips } from 'src/app/store/ships.actions';
-import { ShipsState } from 'src/app/store/ships.state';
 
 @Component({
   selector: 'app-ships',
@@ -13,7 +10,7 @@ import { ShipsState } from 'src/app/store/ships.state';
 })
 export class ShipsComponent implements OnInit {
 
-  public dataList: iShipsState;
+  public dataList: IShipsState;
   loaded: boolean = false;
 
   constructor(

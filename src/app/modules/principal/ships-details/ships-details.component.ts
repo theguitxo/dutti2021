@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { iShipsState } from 'src/app/interfaces/ships.interface';
+import { IShipsState } from 'src/app/interfaces/ships.interface';
 declare var $: any;
 
 
@@ -10,7 +10,7 @@ declare var $: any;
 })
 export class ShipsDetailsComponent implements OnInit {
 
-  @Input() dataList: iShipsState;
+  @Input() dataList: IShipsState;
   @Output() changePage = new EventEmitter<number>();
 
   config: any;

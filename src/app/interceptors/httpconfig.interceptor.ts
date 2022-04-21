@@ -3,12 +3,11 @@ import {
   HttpInterceptor,
   HttpRequest,
   HttpHandler,
-  HttpEvent,
-  HttpErrorResponse,
+  HttpEvent
 } from '@angular/common/http';
 
-import { Observable, throwError } from 'rxjs';
-import { catchError, finalize } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { finalize } from 'rxjs/operators';
 import { LoadingService } from '../services/loading.service';
 
 @Injectable({

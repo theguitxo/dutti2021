@@ -4,10 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BehaviorSubject } from 'rxjs';
-import { ShipsDetailsComponent } from '../../principal/ships-details/ships-details.component';
 import { ShipsComponent } from '../../principal/ships/ships.component';
-
-
 import { LoginComponent } from './login.component';
 
 describe('LoginComponent', () => {
@@ -26,7 +23,7 @@ describe('LoginComponent', () => {
   class MockShipDetails {
     @Input() dataList:any;
   }
-  
+
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ LoginComponent, ShipsComponent, MockShipDetails],

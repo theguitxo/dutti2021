@@ -1,5 +1,4 @@
 import { ChangeDetectorRef, Component, OnInit, Renderer2 } from '@angular/core';
-import { map } from 'rxjs/operators';
 import { LoadingService } from 'src/app/services/loading.service';
 
 @Component({
