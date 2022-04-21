@@ -53,8 +53,8 @@
                 <hr class="hr-line">
                 <div class="input-group-append form__required" *ngIf="registerForm.get('email').invalid">
                     <span class="colorInvalid">
-                      <i *ngIf="f.email.errors?.required">Email is required</em>
-                      <i *ngIf="f.email.errors?.email">Email not valid</em>
+                      <em *ngIf="f.email.errors?.required">Email is required</em>
+                      <em *ngIf="f.email.errors?.email">Email not valid</em>
                     </span>
                 </div>
         </div>
@@ -68,8 +68,8 @@
                 <hr class="hr-line">
                 <div class="input-group-append form__required">
                     <span class="colorInvalid">
-                        <i *ngIf="f.password.errors?.required">Password is required</em>
-                        <i *ngIf="f.password.errors?.minlength || f.password.errors?.maxlength">Password length must be 8 characters</em>
+                        <em *ngIf="f.password.errors?.required">Password is required</em>
+                        <em *ngIf="f.password.errors?.minlength || f.password.errors?.maxlength">Password length must be 8 characters</em>
                     </span>
                 </div>
         </div>
