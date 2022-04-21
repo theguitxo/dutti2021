@@ -10,12 +10,7 @@ import { LoginComponent } from './login.component';
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
-  let router: Router;
 
-  const serviceMock ={
-    getShips:function(){ return  new BehaviorSubject([])}
-
-  }
   @Component({
     selector: 'ships-details',
     template: '<p>Mock Ship Details</p>'
@@ -33,9 +28,8 @@ describe('LoginComponent', () => {
           path: 'principal/ships',
           component: ShipsComponent,
         }]),
-        ReactiveFormsModule],
-
-
+        ReactiveFormsModule
+      ]
     })
     .compileComponents();
   }));
