@@ -15,11 +15,6 @@ export enum STORAGE_VALUES {
 export class StorageService {
 
   /**
-   * constructor
-   */
-  constructor() { }
-
-  /**
    * store
    * this function permits choose a storage by type
    * @param type a enum that indicates the type of storage to use

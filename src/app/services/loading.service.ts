@@ -11,8 +11,6 @@ export class LoadingService {
     return this._isLoading.asObservable();
   }
 
-  constructor() { }
-
   startLoading(): void {
     console.log('Is loading...');
     this._isLoading.next(true);
