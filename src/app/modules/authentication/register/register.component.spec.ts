@@ -13,11 +13,6 @@ describe('RegisterComponent', () => {
   let component: RegisterComponent;
   let fixture: ComponentFixture<RegisterComponent>;
 
-  const serviceMock ={
-    getShips:function(){ return  new BehaviorSubject([])}
-
-  }
-
   @Component({
     selector: 'ships-details',
     template: '<p>Mock Ship Details</p>'

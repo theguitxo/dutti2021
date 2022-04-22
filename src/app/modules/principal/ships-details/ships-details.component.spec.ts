@@ -2,7 +2,6 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
 
 import { ShipsDetailsComponent } from './ships-details.component';
-import { PaginationControlsComponent } from 'ngx-pagination';
 import { Component, Pipe, PipeTransform } from '@angular/core';
 
 describe('ShipsDetailsComponent', () => {

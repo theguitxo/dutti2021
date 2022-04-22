@@ -1,4 +1,4 @@
-import { Injectable, setTestabilityGetter } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { tap } from "rxjs/operators";
 import { IShipsState, ShipsResponse } from "../interfaces/ships.interface";

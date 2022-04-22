@@ -1,4 +1,3 @@
-import { ThrowStmt } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { CacheItem } from '../interfaces/cache.interface';
 import { StorageService, STORAGE_VALUES } from './storage.service';

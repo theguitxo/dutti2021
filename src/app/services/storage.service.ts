@@ -110,25 +110,13 @@ export class StorageService {
    * @returns the value, if it exists into the storage, otherwise, null
    */
   getJSONValue(type: STORAGE_VALUES, key: string): any | null {
-
     const valueString = this.getValue(type, key);
 
-    let result: any;
-
-    if (valueString !== null) {
-
-      try {
-        result = JSON.parse(valueString);
-      } catch (e) {
-        result = null;
-      }
-
-    } else {
-      return result = null;
+    try {
+      return JSON.parse(valueString);
+    } catch (e) {
+      return null;
     }
-
-    return result;
-
   }
 
   /**
