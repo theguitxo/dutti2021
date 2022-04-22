@@ -5,8 +5,7 @@ import { GetShips } from 'src/app/store/ships.actions';
 
 @Component({
   selector: 'app-ships',
-  templateUrl: './ships.component.html',
-  styleUrls: ['./ships.component.scss']
+  templateUrl: './ships.component.html'
 })
 export class ShipsComponent implements OnInit {
 
