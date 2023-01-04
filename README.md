@@ -7,12 +7,12 @@
 
 # Tasks.
 
-1.  RE-Estructura el proyecto como mejor consideres. 
+1.  RE-Estructura el proyecto como mejor consideres.
     1.  Como mínimo se debe crear un modulo a parte para la autenticación y registro.
     2.  Implementa Interficies  o clases  para los tipos de datos que consideres.
 2. Implementa un sistema de login/registro que persista los datos correctamente.
    1. Puedes utilizar:
-      1. LocalStorage, 
+      1. LocalStorage,
       2. Alguna api externa
       3. Implementar servicio propio con Nodejs.
 3. Implementa el patron de diseño redux para la gestion del listado de naves.
@@ -26,10 +26,10 @@
     1.  Si alguna de las medidas no es de código, comentalas a continuación en este Readme.
 
 
-# Getting Started 
+# Getting Started
 
 `npm i`  for install
-Run `npm run start` for a dev server. 
+Run `npm run start` for a dev server.
 Navigate to `http://localhost:4200/`.
 
 
@@ -41,3 +41,8 @@ cachear las repuestas HTTP y, suponiendo que el JSON que devuelve la API, lo gen
 [Cachear peticiones HTTP](https://diego.com.es/cache-http)
 
 [Cachear consultas SQL](https://blogprog.gonzalolopez.es/articulos/cache-de-consultas.html)
+
+
+# Demo
+
+[https://theguitxo.github.io/dutti2021/](https://theguitxo.github.io/dutti2021/)
